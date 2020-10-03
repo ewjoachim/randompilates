@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  html {
+    height: 100%;
+}
+body {
+    background-image: url("pilates.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: black;
+    width: 100%;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const squareSizePx = 400;
+  const imageHeightPx = 4032;
+  const imageWidthPx = 3024;
+  const xPositions = [600, 1100, 1540, 2080, 2580];
+  const yPositions = [1250, 1620, 2000, 2360, 2720, 3070, 3420];
+
+  document.addEventListener("click", function() {
+    document.getElementsByTagName("body")[0].style["background-size"] = `unset`;
+    let topPick = Math.floor(Math.random() * yPositions.length);
+    let leftPick = Math.floor(Math.random() * xPositions.length);
+    let top = yPositions[topPick];
+    let left = xPositions[leftPick];
+    left_offset =  - Math.floor(left - imageWidthPx / 2);
+    top_offset = - Math.floor(top - imageHeightPx/2);
+    pos = `calc(50% + ${left_offset}px) calc(50% + ${top_offset}px)`;
+    document.getElementsByTagName("body")[0].style["background-position"] = pos;
+  });
+})
+</script>
+</head>
+<body>
+</body>
+</html>
